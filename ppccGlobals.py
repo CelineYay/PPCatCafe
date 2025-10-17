@@ -1,14 +1,20 @@
 import streamlit as st
 import ngrok as ng
+curr_user = ""
+payed = False
+ismember = False
 
 ##### Membership here #####
-curr_user = ""
 class Member:
     #class for every member account object
 
-    def __init__(self, password: str, points: float = 0):
+    def __init__(self, username: str, password: str, points: float = 0):
+        self.username = username
         self.password = password
         self.points = points
+
+    def get_username(self) -> str:
+        return self.username
 
     def check_password(self, input_password: str) -> bool:
         #verify if the provided password correct
@@ -25,15 +31,24 @@ class Member:
             return True #redeemed successfully
         return False #sad life too bad
     
+    def edit_points(self, new_points: float) -> None:
+        self.points = new_points
+
+    def get_points(self) -> float:
+        return self.points
+    
     def __show_points__(self) -> str:
         return str(self.points)
 
 
 ##### Data here #####
 #existing_member = (unique_username)
-existing_members = set()
-#voucher_codes = {voucher_key_name: {type: [description, value]}}
-voucher_codes = {"PPCCthanksyou25": {"discount": ["Get 10'%' off your next visit" ,0.1]}, "Congrats100customer":{"free": ["1 free slice of cake", "Cake"]}, "SUTDCTDGOTU":{"free": ["free entry to the cat cafe", "Entry"]}}
+existing_members = {}
+#voucher_codes = {voucher_key_name: [type, description, value]}}
+voucher_codes = {
+    "PPCCthanksyou25": ["discount","Get 10% off your next visit" ,0.1], 
+    "Congrats100customer": ["free", "get $10 off, gst not included", 10.00]
+    }
 #cats = {cat_name: [description, image.png]}
 cats = {""} #TODO
 #menu = {category: {item_name: [price, image.png, custom_type]}}
