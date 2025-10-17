@@ -19,7 +19,7 @@ for item in ppc.user_cart:
         st.write(f"** {ppc.user_cart[item][3]}")
         custom_type = ppc.user_cart[item][2]
         custom_choice = ppc.user_cart[item][3].split(' ')[0]
-        total += ppc.custom_category[custom_type][custom_choice][0]
+        total += ppc.custom_drinks[custom_type][custom_choice][0]
 
 st.write("\n\n")
 
