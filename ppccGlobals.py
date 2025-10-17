@@ -54,7 +54,7 @@ cats = {""} #TODO
 #menu = {category: {item_name: [price, image.png, custom_type]}}
 menu = {
     "home": {"Entry":[10.00, ""]},
-    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.jpg", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
+    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.png", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
     "foods": {"Waffle":[5.50, "foods_waffle.png"],"Cake":[5.50, "foods_cake.png"]}, 
     "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.png"], "Cat Toy":[1.00, "catTreat_toy.png"]},
     }
@@ -74,9 +74,6 @@ def get_img_path(category, menu_category_item):
     if menu[category][menu_category_item][1] == "":
         return "Images\default.jpg"
     else:
-        #TODO add the rest of the item images
-        if menu_category_item != "Bubble Milk tea":
-            return "Images\default.jpg"
         return f"Images\{menu[category][menu_category_item][1]}"
 
 def single_item_display(category, menu_category_item):
