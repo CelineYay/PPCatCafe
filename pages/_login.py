@@ -10,11 +10,12 @@ if st.button("login", key="login_button"):
     if login_user not in ppc.existing_members:
         st.error("Username does not exist. Please sign up first!")
     else:
-        curr_user = login_user
-        if curr_user.check_password(login_password):
+        ppc.curr_user = ppc.existing_members[login_user]
+        if ppc.curr_user.check_password(str(login_password)):
             st.success("Login successful!")
-            curr_user.add_points(5)
-            st.write(f"Welcome back, f{curr_user} member you have f{curr_user.__show_points__}!")
+            ppc.curr_user.add_points(5)
+            ppc.ismember = True
+            st.switch_page("pages/1_meet_the_cats.py")
         else:
             st.error("Incorrect password. Please try again!")
 
