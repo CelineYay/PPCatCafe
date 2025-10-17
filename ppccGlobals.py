@@ -54,15 +54,15 @@ cats = {""} #TODO
 #menu = {category: {item_name: [price, image.png, custom_type]}}
 menu = {
     "home": {"Entry":[10.00, ""]},
-    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.png", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
-    "foods": {"Waffle":[5.50, "foods_waffle.png"],"Cake":[5.50, "foods_cake.png"]}, 
-    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.jpg"], "Cat Toy":[1.00, "catTreat_toy.png"]},
+    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.jpg", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
+    "foods": {"Waffle":[5.50, "foods_waffle.png","Ice Cream"],"Cake":[5.50, "foods_cake.png"]}, 
+    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.png"], "Cat Toy":[1.00, "catTreat_toy.png"]},
     }
 #custom_drinks = {custom_type: {type_option: [price]}}
 custom_drinks = {
     "Toppings": {"None":[0.00],"Bubbles":[0.50], "Pudding":[0.50]},
-    "Temperature": {"Hot":[0.00], "Cold":[0.00]}
-    #"Ice Cream": {"None":[0.00]} #TODO
+    "Temperature": {"Hot":[0.00], "Cold":[0.00]},
+    "Ice Cream": {"Chocolate":[1.00],"Vanilla":[1.00],"Strawberry":[1.00],"Durian":[1.00]}
     }
 #user_cart = {item_name: [quantity, category, custom_option]}
 user_cart = {}
