@@ -1,5 +1,5 @@
 import streamlit as st
-import ngrok as ng
+from pyngrok import ngrok
 curr_user = ""
 payed = False
 ismember = False
@@ -56,7 +56,7 @@ menu = {
     "home": {"Entry":[10.00, ""]},
     "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.png", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
     "foods": {"Waffle":[5.50, "foods_waffle.png"],"Cake":[5.50, "foods_cake.png"]}, 
-    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.png"], "Cat Toy":[1.00, "catTreat_toy.png"]},
+    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.jpg"], "Cat Toy":[1.00, "catTreat_toy.png"]},
     }
 #custom_drinks = {custom_type: {type_option: [price]}}
 custom_drinks = {

@@ -1,5 +1,5 @@
 import streamlit as st
-import ngrok as ng
+from pyngrok import ngrok
 import ppccGlobals as ppc
 
 st.title("Member Login")

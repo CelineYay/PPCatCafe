@@ -1,12 +1,8 @@
 import streamlit as st
-import ngrok as ng
+from pyngrok import ngrok
 import ppccGlobals as ppc
 
-<<<<<<< HEAD
-st.title("Member Login")
-=======
 st.title("Member Signup\n")
->>>>>>> 94d64117b5c3ccbffa647e0d69e548739e83b363
 
 new_username = st.text_input("Username", key="signup_username")
 new_password = st.text_input("Password", type="password", key="signup_password")
