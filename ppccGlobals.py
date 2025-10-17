@@ -55,14 +55,14 @@ cats = {""} #TODO
 menu = {
     "home": {"Entry":[10.00, ""]},
     "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.png", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
-    "foods": {"Waffle":[5.50, "foods_waffle.png"],"Cake":[5.50, "foods_cake.png"]}, 
+    "foods": {"Waffle":[5.50, "foods_waffle.png","Ice Cream"],"Cake":[5.50, "foods_cake.png"]}, 
     "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.png"], "Cat Toy":[1.00, "catTreat_toy.png"]},
     }
-#custom_drinks = {custom_type: {type_option: [price]}}
-custom_drinks = {
+#custom_category = {custom_type: {type_option: [price]}}
+custom_category = {
     "Toppings": {"None":[0.00],"Bubbles":[0.50], "Pudding":[0.50]},
-    "Temperature": {"Hot":[0.00], "Cold":[0.00]}
-    #"Ice Cream": {"None":[0.00]} #TODO
+    "Temperature": {"Hot":[0.00], "Cold":[0.00]},
+    "Ice Cream": {"None":[0.00],"Chocolate":[1.00],"Vanilla":[1.00],"Strawberry":[1.00],"Durian":[1.00]}
     }
 #user_cart = {item_name: [quantity, category, custom_option]}
 user_cart = {}
@@ -85,13 +85,13 @@ def single_item_display(category, menu_category_item):
     if len(menu[category][menu_category_item]) > 2:
         #gets the type of customisation options
         custom_type = menu[category][menu_category_item][2]
-        custom_options = list(custom_drinks.get(custom_type, {}).keys())
-        custom_price = list(custom_drinks.get(custom_type, {}).values())
+        custom_options = list(custom_category.get(custom_type, {}).keys())
+        custom_price = list(custom_category.get(custom_type, {}).values())
         #st.radio(label, options, index=0, format_func=special_internal_function, key=None
         customed = st.radio(
             custom_type, 
-            [f"{opt} (+${custom_drinks[custom_type][opt][0]:.2f})" 
-             if custom_drinks[custom_type][opt][0] > 0 else opt 
+            [f"{opt} (+${custom_category[custom_type][opt][0]:.2f})" 
+             if custom_category[custom_type][opt][0] > 0 else opt 
              for opt in custom_options],
              index=0,
              key=category+menu_category_item+custom_type
