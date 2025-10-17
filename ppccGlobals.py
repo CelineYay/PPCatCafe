@@ -49,7 +49,7 @@ custom_drinks = {
     "Temperature": {"Hot":[0.00], "Cold":[0.00]}
     #"Ice Cream": {"None":[0.00]} #TODO
     }
-#user_cart = {item_name: [quantity]}
+#user_cart = {item_name: [quantity, category, custom_option]}
 user_cart = {}
 
 
@@ -86,5 +86,8 @@ def single_item_display(category, menu_category_item):
         )
     quantity = st.number_input("Quantity", min_value=0, max_value=20, value=0, key=category+menu_category_item)
     if quantity > 0:
-        user_cart[menu_category_item] = [quantity, customed] if len(menu[category][menu_category_item]) > 2 else [quantity]
+        if len(menu[category][menu_category_item]) > 2:
+            user_cart[menu_category_item] = [category, quantity, custom_type, customed]
+        else:
+            user_cart[menu_category_item] = [category, quantity]
     return
