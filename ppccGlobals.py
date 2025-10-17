@@ -85,4 +85,6 @@ def single_item_display(category, menu_category_item):
              key=category+menu_category_item+custom_type
         )
     quantity = st.number_input("Quantity", min_value=0, max_value=20, value=0, key=category+menu_category_item)
-    return quantity
+    if quantity > 0:
+        user_cart[menu_category_item] = [quantity, customed] if len(menu[category][menu_category_item]) > 2 else [quantity]
+    return

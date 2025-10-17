@@ -4,7 +4,7 @@ import ppccGlobals as ppc
 
 st.title("PPCatCafe")
 st.header("Checkout")
+total = 0
 
-if curr_user != None:
-    st.write(f"Welcome back, f{curr_user} member you have f{curr_user}!")
-
+for item in ppc.user_cart:
+    st.write(f"{item}")
