@@ -2,7 +2,7 @@ import streamlit as st
 import ngrok as ng
 import ppccGlobals as ppc
 
-st.title("Member Login")
+st.title("Member Login\n")
 
 new_username = st.text_input("Username", key="signup_username")
 new_password = st.text_input("Password", type="password", key="signup_password")
