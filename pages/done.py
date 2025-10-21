@@ -10,6 +10,6 @@ if ppc.payed:
         ppc.curr_user = ""
         ppc.user_cart = {}
         ppc.ismember = False
-        st.switch_page("pages/1_meet_the_cats.py")
+        st.switch_page("PPCatCafe.py")
 else:
     st.switch_page("pages/checkout.py")

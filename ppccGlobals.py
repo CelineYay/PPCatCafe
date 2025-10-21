@@ -49,14 +49,12 @@ voucher_codes = {
     "PPCCthanksyou25": ["discount","Get 10% off your next visit" ,0.1], 
     "Congrats100customer": ["free", "get $10 off, gst not included", 10.00]
     }
-#cats = {cat_name: [description, image.png]}
-cats = {""} #TODO
 #menu = {category: {item_name: [price, image.png, custom_type]}}
 menu = {
     "home": {"Entry":[10.00, ""]},
-    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemliktea.jpg", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
+    "drinks": {"Jasmine Milk tea":[5.50, "drinks_jasmineMilkTea.png", "Toppings"], "Bubble Milk tea":[6.00, "drinks_bubblemilktea.png", "Toppings"], "Matcha Latte":[5.00, "drinks_matchalatte.png","Temperature"], "Mango Milkshake":[5.5, "drinks_mangomilkshake.png"]}, 
     "foods": {"Waffle":[5.50, "foods_waffle.png","Ice Cream"],"Cake":[5.50, "foods_cake.png"]}, 
-    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.png"], "Cat Toy":[1.00, "catTreat_toy.png"]},
+    "cat treats": {"Donate":[1.00, ""], "Cat Treat":[2.00, "catTreat_treat.jpg"], "Cat Toy":[1.00, "catTreat_toy.png"]},
     }
 #custom_drinks = {custom_type: {type_option: [price]}}
 custom_drinks = {
@@ -66,6 +64,7 @@ custom_drinks = {
     }
 #user_cart = {item_name: [quantity, category, custom_option]}
 user_cart = {}
+#add products into cart
 
 
 ##### Functions here #####
@@ -84,18 +83,19 @@ def single_item_display(category, menu_category_item):
     #check if customisation avalible
     if len(menu[category][menu_category_item]) > 2:
         #gets the type of customisation options
-        custom_type = menu[category][menu_category_item][2]
-        custom_options = list(custom_drinks.get(custom_type, {}).keys())
-        custom_price = list(custom_drinks.get(custom_type, {}).values())
+        custom_type = menu[category][menu_category_item][2] #toppings value like temperature
+        custom_options = list(custom_drinks.get(custom_type, {}).keys()) #find options clickable
+        custom_price = list(custom_drinks.get(custom_type, {}).values()) #find price
         #st.radio(label, options, index=0, format_func=special_internal_function, key=None
         customed = st.radio(
             custom_type, 
-            [f"{opt} (+${custom_drinks[custom_type][opt][0]:.2f})" 
-             if custom_drinks[custom_type][opt][0] > 0 else opt 
+            [f"{opt} (+${custom_drinks[custom_type][opt][0]:.2f})" #show price to 2dp
+             if custom_drinks[custom_type][opt][0] > 0 else opt #if price >0 show price else just show option
              for opt in custom_options],
-             index=0,
+             index=0, #default option selected
              key=category+menu_category_item+custom_type
         )
+    #quanity selector
     quantity = st.number_input("Quantity", min_value=0, max_value=20, value=0, key=category+menu_category_item)
     if quantity > 0:
         if len(menu[category][menu_category_item]) > 2:

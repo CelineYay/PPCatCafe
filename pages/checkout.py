@@ -12,10 +12,10 @@ if ppc.payed:
     st.switch_page("pages/done.py")
 
 for item in ppc.user_cart:
-    quantity = ppc.user_cart[item][1]
-    st.write(f"{item}  x {quantity} (+${ppc.menu[ppc.user_cart[item][0]][item][0] * quantity:.2f})")
+    quantity = ppc.user_cart[item][1] #get quantity from user_cart
+    st.write(f"{item}  x {quantity} (+${ppc.menu[ppc.user_cart[item][0]][item][0] * quantity:.2f})")#getting price * quanity
     total+= ppc.menu[(ppc.user_cart[item][0])][item][0] * quantity
-    if len(ppc.user_cart[item]) >= 4:
+    if len(ppc.user_cart[item]) >= 4: #mean customisation exists (category,quantity,custom_type,custom_choice)
         st.write(f"** {ppc.user_cart[item][3]}")
         custom_type = ppc.user_cart[item][2]
         custom_choice = ppc.user_cart[item][3].split(' ')[0]
@@ -36,15 +36,15 @@ if voucher:
         total = total - ppc.voucher_codes[user_voucher][2]
 
 if st.button("apply", key="apply_button"):
-    if total < 0:
-        total = 0.00
     if ppc.ismember:
         ppc.curr_user.add_points(total)
         points = ppc.curr_user.get_points()
         st.success(f"Hello, {ppc.curr_user.get_username()}, you have {points}.")
-        total = total - (points // 10)
-        ppc.curr_user.edit_points(points % 10)
-        st.write(f"offset ${points // 10}, remaining points {points % 10}")
+        total = total - (points // 10) #each 10 points = $1 off
+        ppc.curr_user.edit_points(points % 10)#update points after use
+        st.write(f"offset ${points // 10}, remaining points {points % 10}") 
+    if total < 0:
+        total = 0.00
 
 
     st.write("Gst (9%)")

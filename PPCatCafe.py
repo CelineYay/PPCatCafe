@@ -2,7 +2,7 @@ import streamlit as st
 from pyngrok import ngrok
 import ppccGlobals as ppc
 
-ngrok.set_auth_token("") #add your own auth token here
+ngrok.set_auth_token("34CaYEcVuSkYdAuTgzGZeb9kx6D_5c8QGo7t1NpdJpkdpGTEE") #add your own auth token here
 # Start ngrok tunnel to expose the Streamlit server
 ngrok_tunnel = ngrok.connect(addr='5011', proto='http', bind_tls=True) #5011
 # Print the URL of the ngrok tunnel
@@ -19,6 +19,6 @@ st.image("Images/icon.jpg")
 
 st.write("\n\ncontinue as:")
 if st.button("Member", key="member_button"):
-    st.switch_page("pages/_login.py")
+    st.switch_page("pages/_login.py") #change pages
 if st.button("Guest", key="mtc_button"):
     st.switch_page("pages/1_meet_the_cats.py")
